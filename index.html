@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Form</h2>
+
+    <!-- Form to add a new row -->
+    <form id="dataForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" class="form-control" id="age" required>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addRow()">Add Row</button>
+    </form>
+
+    <!-- Table to display data -->
+    <table class="table mt-3">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody id="dataTableBody">
+        <!-- Table rows will be dynamically added here -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Function to add a new row to the table
+    function addRow() {
+        // Get form values
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+
+        // Create a new row
+        var row = document.createElement("tr");
+
+        // Create cells for the row
+        var cell1 = document.createElement("td");
+        var cell2 = document.createElement("td");
+
+        // Set cell values
+        cell1.innerHTML = name;
+        cell2.innerHTML = age;
+
+        // Append cells to the row
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+
+        // Append the row to the table
+        document.getElementById("dataTableBody").appendChild(row);
+
+        // Clear form fields after adding a row
+        document.getElementById("dataForm").reset();
+    }
+</script>
+
+</body>
+</html>
